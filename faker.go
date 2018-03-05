@@ -12,6 +12,8 @@ import (
 )
 
 var src = rand.NewSource(time.Now().UnixNano())
+var r = rand.New(src)
+
 var mu = &sync.Mutex{}
 
 const (
@@ -117,7 +119,6 @@ func FakeData(a interface{}) error {
 }
 
 func setSliceData(v reflect.Value) error {
-	r := rand.New(src)
 	v = reflect.Indirect(v)
 
 	var err error
